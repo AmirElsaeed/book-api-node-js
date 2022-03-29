@@ -11,3 +11,9 @@
 2- create one store per request
 
 3- create multiple stores per request as Bulk
+
+4- git list of books
+
+5- git book details by bookId
+
+6- create one book
