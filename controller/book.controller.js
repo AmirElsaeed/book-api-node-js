@@ -1,6 +1,6 @@
 const quries = require('../db/quries');
 const dbconnection = require('../db/connection');
-const LoggerService = require('../services/logger.serivce');
+const LoggerService = require('../services/logger.service');
 
 const logger = new LoggerService('book.controller');
 
