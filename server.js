@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const noteRoute = require('./route/store.route');
+const storeRoute = require('./route/store.route');
+const bookRoute = require('./route/book.route');
 
 const app = express();
 const port = process.env.PORT;
@@ -18,8 +19,9 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.use('/api/v1', noteRoute);
+app.use('/api/v1', storeRoute);
+app.use('/api/v1', bookRoute);
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`app listening on port ${port}`);
 });

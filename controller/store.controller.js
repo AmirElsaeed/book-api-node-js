@@ -49,7 +49,7 @@ exports.saveBulkStore = async (req, res) => {
             }
         }
 
-        let x = [];
+        let response = [];
         for(row of req.body){
             let created_by = 'Amir';
             let created_on = new Date();
@@ -59,9 +59,9 @@ exports.saveBulkStore = async (req, res) => {
             let result = await dbconnection.dbquery(saveQuery, values);
         
             result.rows[0].message = 'added successfully';
-            x.push(result.rows[0]);
+            response.push(result.rows[0]);
         }
-        return res.status(201).send(JSON.stringify(x));
+        return res.status(201).send(JSON.stringify(response));
 
     } catch(err) {
         return res.status(500).send({ error : err });
