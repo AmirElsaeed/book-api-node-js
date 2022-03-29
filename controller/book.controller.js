@@ -1,11 +1,15 @@
 const quries = require('../db/quries');
 const dbconnection = require('../db/connection');
+const LoggerService = require('../services/logger.serivce');
+
+const logger = new LoggerService('book.controller');
 
 exports.getBookList = async (req, res) => {
     try {
         res.setHeader("Content-Type", "application/json");
         let bookListQuery = quries.queryList.GET_BOOK_LIST_QUERY;
         let result = await dbconnection.dbquery(bookListQuery);
+        logger.info("return book list.", result.rows);
         return res.status(200).send(JSON.stringify(result.rows));
     } catch(err) {
         return res.status(500).send({ error: err });
@@ -31,7 +35,6 @@ exports.getBookDetails = async (req, res) => {
 exports.saveBook = async (req, res) => {
     try {
         res.setHeader("Content-Type", "application/json");
-        // book_title, book_desc, book_author, book_publisher, book_pages, store_code, created_by, created_on
         let book_title = req.body.book_title;
         let book_author = req.body.book_author;
         let book_publisher = req.body.book_publisher;
