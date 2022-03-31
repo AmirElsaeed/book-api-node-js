@@ -1,6 +1,10 @@
 const quries = require('../db/quries');
 const dbconnection = require('../db/connection');
 const LoggerService = require('../services/logger.service');
+const auditService = require('../audit/audit.service');
+const auditAction = require('../audit/auditAction');
+const util = require('../utils/utility');
+
 
 const logger = new LoggerService('book.controller');
 
@@ -10,6 +14,9 @@ exports.getBookList = async (req, res) => {
         let bookListQuery = quries.queryList.GET_BOOK_LIST_QUERY;
         let result = await dbconnection.dbquery(bookListQuery);
         logger.info("return book list.", result.rows);
+        
+        auditService.prepareAudit(auditAction.actionList.GET_BOOK_LIST,
+                                  result.rows, null, "postman", util.dateFormat());
         return res.status(200).send(JSON.stringify(result.rows));
     } catch(err) {
         return res.status(500).send({ error: err });

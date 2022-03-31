@@ -1,8 +1,5 @@
 const winston = require('winston');
-
-const dateFormat = () => {
-    return new Date(Date.now()).toLocaleString();
-}
+const util = require('../utils/utility');
 
 class LoggerService {
 
@@ -12,7 +9,7 @@ class LoggerService {
         const logger = winston.createLogger({
             level: 'info',
             format: winston.format.printf(info => {
-                let message = `<${dateFormat()}><${info.level}><${info.message}>`;
+                let message = `<${util.dateFormat()}><${info.level}><${info.message}>`;
                 message = info.obj ? message + `<${JSON.stringify(info.obj)}>` : message;
                 return message;
             }),

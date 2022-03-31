@@ -31,5 +31,8 @@ exports.queryList = {
     SAVE_BOOK_STATEMENT : `INSERT INTO BMS.BOOK
                             (BOOK_TITLE, BOOK_DESC, BOOK_AUTHOR, BOOK_PUBLISHER, BOOK_PAGES, STORE_CODE, CREATED_BY, CREATED_ON)
                             VALUES($1, $2, $3, $4, $5, $6, $7, $8)
-                            RETURNING *`,                                  
+                            RETURNING *`,         
+    AUDIT_QUERY : `INSERT INTO bms.app_audit
+    (audit_action, audit_data, audit_status, audit_error, audit_by, audit_on)
+    VALUES($1, $2, $3, $4, $5, $6)`                                                     
 }

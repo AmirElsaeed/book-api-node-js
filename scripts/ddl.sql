@@ -42,3 +42,14 @@ CREATE TABLE bms.store (
 	created_on timestamp NOT NULL,
 	CONSTRAINT store_pk PRIMARY KEY (store_id)
 );
+
+create table bms.app_audit (
+	audit_id serial not null,
+	audit_action varchar(100) not null,
+	audit_data json null,
+	audit_by varchar(50) not null,
+	audit_on timestamp not null,
+	audit_status varchar(50) null,
+	audit_error json null,
+	constraint app_audit_pk primary key(audit_id)
+);
