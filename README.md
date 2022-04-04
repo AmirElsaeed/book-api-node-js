@@ -17,3 +17,7 @@
 5- git book details by bookId
 
 6- create one book
+
+# loggers implemented
+
+# audit implemented
