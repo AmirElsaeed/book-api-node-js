@@ -11,12 +11,15 @@ const logger = new LoggerService('book.controller');
 exports.getBookList = async (req, res) => {
     try {
         res.setHeader("Content-Type", "application/json");
+
         let bookListQuery = quries.queryList.GET_BOOK_LIST_QUERY;
         let result = await dbconnection.dbquery(bookListQuery);
+
         logger.info("return book list.", result.rows);
-        
+
         auditService.prepareAudit(auditAction.actionList.GET_BOOK_LIST,
                                   result.rows, null, "postman", util.dateFormat());
+                                  
         return res.status(200).send(JSON.stringify(result.rows));
     } catch(err) {
         return res.status(500).send({ error: err });

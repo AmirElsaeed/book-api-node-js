@@ -23,5 +23,5 @@ exports.prepareAudit = (auditAction, data, error, auditBy, auditOn) => {
         status = 500;
     }
     let auditObj = new auditModel.Audit(auditAction, data, status, error, auditBy, auditOn);
-    emitter.emit(auditEvent, auditObj)
+    emitter.emit(auditEvent, auditObj);
 }
