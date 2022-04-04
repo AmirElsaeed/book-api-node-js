@@ -4,7 +4,7 @@
 
 2- i am using postgresql you can change DATABASE_URL from `.env` file
 
-# finished services
+### finished services
 
 1- get list of stores
 
@@ -18,6 +18,8 @@
 
 6- create one book
 
-# loggers implemented
+### loggers implemented
 
-# audit implemented
+### audit implemented
+
+### swagger implemented
